@@ -273,16 +273,6 @@ public class TradeConfiguration {
 				}
 			}
 			
-			if (material == null) {
-				try {
-					int legacyId = Integer.parseInt(materialString);
-					material = Material.getMaterial(legacyId);
-				} catch (NumberFormatException nfe) {
-					// Give up
-					throw new IllegalArgumentException("Config-String \"" + configStr + "\" material/block-id is invalid");
-				}
-			}
-			
 			if (components.length > 1) {
 				try {
 					int legacyData = Integer.parseInt(components[1]);
@@ -306,10 +296,9 @@ public class TradeConfiguration {
 		public ItemStack newItemStack() {
 			return newItemStack(1);
 		}
-		
-		@SuppressWarnings("deprecation")
+
 		public ItemStack newItemStack(int amount) {
-			ItemStack stack = new ItemStack(material.getId(), amount, data);
+			ItemStack stack = new ItemStack(material, amount, data);
 			return stack;
 		}
 		

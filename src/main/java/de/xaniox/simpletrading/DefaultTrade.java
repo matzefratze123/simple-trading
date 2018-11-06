@@ -53,8 +53,8 @@ public class DefaultTrade implements Trade {
     private static final String[] LEVEL_UP_SEARCH = {"LEVEL_UP", "PLAYER_LEVELUP"};
     private static final String[] CLICK_SEARCH = {"UI_BUTTON_CLICK", "CLICK"};
 	
-	private static final MaterialData UNCONFIRMED_STATUS_MATERIAL_DATA = new MaterialData(Material.STAINED_GLASS, (byte) 14);
-	private static final MaterialData CONFIRMED_STATUS_MATERIAL_DATA = new MaterialData(Material.STAINED_GLASS, (byte) 5);
+	private static final Material UNCONFIRMED_STATUS_MATERIAL_DATA = Material.RED_STAINED_GLASS_PANE;
+	private static final Material CONFIRMED_STATUS_MATERIAL_DATA = Material.GREEN_STAINED_GLASS_PANE;
 	
 	private static final int EXP_INFO_INDEX = 6;
 	private static final int ACCEPT_TRADE_INDEX = 3;
@@ -192,7 +192,7 @@ public class DefaultTrade implements Trade {
 		acceptMeta.setDisplayName(i18n.getString(Messages.Inventory.ACCEPT_TRADE_TITLE));
 		acceptItemStack.setItemMeta(acceptMeta);
 		
-		ItemStack unconfirmedStatusItemStack = UNCONFIRMED_STATUS_MATERIAL_DATA.toItemStack(1);
+		ItemStack unconfirmedStatusItemStack = new ItemStack(UNCONFIRMED_STATUS_MATERIAL_DATA);
 		ItemMeta unconfirmedStatusMeta = unconfirmedStatusItemStack.getItemMeta();
 		unconfirmedStatusMeta.setDisplayName(i18n.getVarString(Messages.Inventory.TRADE_STATUS_TITLE)
 			.setVariable("color", ChatColor.RED.toString())
@@ -816,11 +816,11 @@ public class DefaultTrade implements Trade {
 		boolean usesVault = plugin.usesVault();
 
 		if (initiator.hasAccepted() || partner.hasAccepted()) {
-			statusStack = CONFIRMED_STATUS_MATERIAL_DATA.toItemStack(1);
+			statusStack = new ItemStack(CONFIRMED_STATUS_MATERIAL_DATA);
 			loreLine = i18n.getString(Messages.Inventory.ONE_PLAYER_ACCEPTED);
 			isConfirmed = true;
 		} else {
-			statusStack = UNCONFIRMED_STATUS_MATERIAL_DATA.toItemStack(1);
+			statusStack = new ItemStack(UNCONFIRMED_STATUS_MATERIAL_DATA);
 			loreLine = i18n.getString(Messages.Inventory.WAITING_FOR_OTHER_PLAYER_LORE);
 			isConfirmed = false;
 		}

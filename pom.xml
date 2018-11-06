@@ -128,32 +128,17 @@
       <id>vault-repository</id>
       <url>http://nexus.hc.to/content/repositories/pub_releases</url>
     </repository>
-    <repository>
-      <id>plugin-metrics</id>
-      <url>http://repo.mcstats.org/content/repositories/public</url>
-    </repository>
   </repositories>
   <dependencies>
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.9-R0.1-SNAPSHOT</version>
+      <version>1.13.2-R0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>net.milkbowl.vault</groupId>
       <artifactId>VaultAPI</artifactId>
-      <version>1.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mcstats.bukkit</groupId>
-      <artifactId>metrics</artifactId>
-      <version>R8-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.bukkit</groupId>
-          <artifactId>bukkit</artifactId>
-        </exclusion>
-      </exclusions>
+      <version>1.7</version>
     </dependency>
   </dependencies>
 </project>
